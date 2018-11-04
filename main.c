@@ -48,16 +48,7 @@ unsigned char EE_SparkCharge EEMEM;
 unsigned int  EE_SparkPause EEMEM ;
 unsigned char EE_index_OCR2_mass EEMEM;
 
-
-
-
 unsigned int EE_current_presc EEMEM;
-
-
-
-
-
-
 
 //---------------Переменные глобальные настройки и состояния-------------------//
 
@@ -1223,6 +1214,7 @@ LED_string[3] = IR_Out_mode;                                                //О
                                                                             4)Работа при коротком замыкании(будущее)
                                                                             */
 }
+
 
 static void Menu_Modus_SELECT(void)                                         // Вызвается EnterFunction первой заглавной строчки меню NoMenu
 {
