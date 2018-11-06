@@ -61,7 +61,7 @@ void PutOneDigit(unsigned char Num,unsigned char Digit,unsigned char DOT,unsigne
 
  shift( pgm_read_word(NumCodes+Num)|localvar,dataRGB_LED) ;
 }
-
+//some comment
 // Отдельная функция для вывода крякозябр всяких
 void PutOneSymbol(unsigned char Num_of_Code,unsigned char Digit,unsigned char DOT,unsigned char dataRGB_LED)
 {

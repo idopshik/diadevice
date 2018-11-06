@@ -1667,13 +1667,14 @@ void Do_Short_shoot_logic(void)
         if(IR_ctrl_Byte&IR_outActive)       // Именно сейчас IR3313 управляется сигналом вкл - смотрим что там.
         {
                     uint8_t tmp = PINB;
+
                     if(tmp&(1<<PB5))                                // вывод IR3313 выключен - он в режиме overcurrent
                     {
                          Double_LED_out = Led_Red;
                  
                          if(!(Modus_6_ctrl_byte&Modus_6_ctrl_byte_SHORT_PRESENT))       // Если нужно однократное действие
                          {
-                             SOUND_PlaySong(3);         // бип   - убипрем сирену. Молчим
+                             SOUND_PlaySong(3);         // бип Молчим
                              Modus_6_ctrl_byte &= ~Modus_6_ctrl_byte_sound_ON;  //
                              DynamicLedRelease();                               // И дисп включим, больше для дебага
                               #if defined( DebugCommon )
