@@ -1,7 +1,7 @@
 /*
 
  *  Author: isairon
-// Здесь не все на одном порту. Поэтому нюанс в сишнике. Смотри сишник.
+// Р—РґРµСЃСЊ РЅРµ РІСЃРµ РЅР° РѕРґРЅРѕРј РїРѕСЂС‚Сѓ. РџРѕСЌС‚РѕРјСѓ РЅСЋР°РЅСЃ РІ СЃРёС€РЅРёРєРµ. РЎРјРѕС‚СЂРё СЃРёС€РЅРёРє.
  */ 
 
 #ifndef LED_SHIFT_H_
@@ -20,7 +20,7 @@ void Hardware_set_for_shift (void);
 void shift( unsigned int data,unsigned char dataRGB_LED);
 void Data_Out (unsigned char d);
 void PutOneDigit(unsigned char Num,unsigned char Digit,unsigned char DOT,unsigned char dataRGB_LED);
-void PREshift(unsigned char dataRGB_LED);							 // Преднаполнение регистра номер 1 (будет сдвинут на третий).
+void PREshift(unsigned char dataRGB_LED);							 // РџСЂРµРґРЅР°РїРѕР»РЅРµРЅРёРµ СЂРµРіРёСЃС‚СЂР° РЅРѕРјРµСЂ 1 (Р±СѓРґРµС‚ СЃРґРІРёРЅСѓС‚ РЅР° С‚СЂРµС‚РёР№).
 
 void PutOneSymbol(unsigned char Num_of_Code,unsigned char Digit,unsigned char DOT,unsigned char dataRGB_LED);
 

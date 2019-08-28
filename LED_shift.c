@@ -84,7 +84,6 @@ void PutOneSymbol(unsigned char Num_of_Code,unsigned char Digit,unsigned char DO
 
 	shift( pgm_read_word(SymbCodes+Num_of_Code)|localvar,dataRGB_LED) ;
 }
-
 void PREshift(unsigned char dataRGB_LED)					// Преднаполнение регистра номер 1 (будет сдвинут на третий). 
 {
 		for (signed char i = 7; i >= 0; i--){				// Now we are entering the loop to shift out 8+ bits
@@ -130,9 +129,6 @@ void shift( unsigned int data,unsigned char dataRGB_LED){					// впихиваем страш
 	
 	ShiftPort |= (1 << ST_CP);								// Set the register-clock pin high to update the output of the shift-register
 	}
-	
-	
-
 	
 	void Hardware_set_for_shift (void)
 	{
