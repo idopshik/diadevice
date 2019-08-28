@@ -2,7 +2,7 @@
 
 #include <avr/pgmspace.h>
 
- // Вместо PORTB должно быть ShiftPort
+ // Р’РјРµСЃС‚Рѕ PORTB РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ ShiftPort
 
 
 //SH_CP   ---- CLOCK
@@ -13,31 +13,31 @@
  10 -NO_0x00;
  11  E - 
  12  C - 
- 13  Г - 
+ 13  Р“ - 
  14  H - 
  15  F - 0xA0C0
- 16  молния 0xA008
- 17	центр  и правая верхняя
- 18 - верх и правая верхняя
- 19 - центр и правая неижняя
+ 16  РјРѕР»РЅРёСЏ 0xA008
+ 17	С†РµРЅС‚СЂ  Рё РїСЂР°РІР°СЏ РІРµСЂС…РЅСЏСЏ
+ 18 - РІРµСЂС… Рё РїСЂР°РІР°СЏ РІРµСЂС…РЅСЏСЏ
+ 19 - С†РµРЅС‚СЂ Рё РїСЂР°РІР°СЏ РЅРµРёР¶РЅСЏСЏ
  20 - 
  21 "-"
  22 "_"
  23 TEST 0xFFFF
  24 L
- 25 П
+ 25 Рџ
  */
  
- // Цифровые коды для конкретного этого подключения двух 595 к конкретно этому LED сегментному диисплею
+ // Р¦РёС„СЂРѕРІС‹Рµ РєРѕРґС‹ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЌС‚РѕРіРѕ РїРѕРґРєР»СЋС‡РµРЅРёСЏ РґРІСѓС… 595 Рє РєРѕРЅРєСЂРµС‚РЅРѕ СЌС‚РѕРјСѓ LED СЃРµРіРјРµРЅС‚РЅРѕРјСѓ РґРёРёСЃРїР»РµСЋ
 
 const unsigned int PROGMEM NumCodes[] =
 {
-	0x38C8,0x808,0xB048,0x9848,0x8888,0x98C0,0xB8C0,0x848,0xB8C8,0x98C8  , 0x0000,0xB0C0, 0x3C,0x20C0,0x2298,0xA0C0,0xA008,0x8008,0x48,0x8800,0x1800,0x8000,0x1000,0xFFFF,0x3080,0x28C8// Десятый член строки - пустышка!
+	0x38C8,0x808,0xB048,0x9848,0x8888,0x98C0,0xB8C0,0x848,0xB8C8,0x98C8  , 0x0000,0xB0C0, 0x3C,0x20C0,0x2298,0xA0C0,0xA008,0x8008,0x48,0x8800,0x1800,0x8000,0x1000,0xFFFF,0x3080,0x28C8// Р”РµСЃСЏС‚С‹Р№ С‡Р»РµРЅ СЃС‚СЂРѕРєРё - РїСѓСЃС‚С‹С€РєР°!
 };
 
 const unsigned int PROGMEM SymbCodes[] =
 {
-	0x0040,0x0008,0x0800,0x1000,0x2000,0x0080,0x8000,0x848,0xB8C8,0x98C8  , 0x0000,0x23C, 0x3C,0x1C,0x2298,0xFFFF// Десятый член строки - пустышка!
+	0x0040,0x0008,0x0800,0x1000,0x2000,0x0080,0x8000,0x848,0xB8C8,0x98C8  , 0x0000,0x23C, 0x3C,0x1C,0x2298,0xFFFF// Р”РµСЃСЏС‚С‹Р№ С‡Р»РµРЅ СЃС‚СЂРѕРєРё - РїСѓСЃС‚С‹С€РєР°!
 };
 void PutOneDigit(unsigned char Num,unsigned char Digit,unsigned char DOT,unsigned char dataRGB_LED)
 {
@@ -56,13 +56,13 @@ void PutOneDigit(unsigned char Num,unsigned char Digit,unsigned char DOT,unsigne
 		default: localvar = 0;
 	}
 	
-	if(DOT)localvar|=0x4000; // ставим точку
+	if(DOT)localvar|=0x4000; // СЃС‚Р°РІРёРј С‚РѕС‡РєСѓ
 
 
  shift( pgm_read_word(NumCodes+Num)|localvar,dataRGB_LED) ;
 }
 //some comment
-// Отдельная функция для вывода крякозябр всяких
+// РћС‚РґРµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РєСЂСЏРєРѕР·СЏР±СЂ РІСЃСЏРєРёС…
 void PutOneSymbol(unsigned char Num_of_Code,unsigned char Digit,unsigned char DOT,unsigned char dataRGB_LED)
 {
 	uint16_t localvar;
@@ -80,11 +80,11 @@ void PutOneSymbol(unsigned char Num_of_Code,unsigned char Digit,unsigned char DO
 		default: localvar = 0;
 	}
 	
-	if(DOT)localvar|=0x4000; // ставим точку
+	if(DOT)localvar|=0x4000; // СЃС‚Р°РІРёРј С‚РѕС‡РєСѓ
 
 	shift( pgm_read_word(SymbCodes+Num_of_Code)|localvar,dataRGB_LED) ;
 }
-void PREshift(unsigned char dataRGB_LED)					// Преднаполнение регистра номер 1 (будет сдвинут на третий). 
+void PREshift(unsigned char dataRGB_LED)					// РџСЂРµРґРЅР°РїРѕР»РЅРµРЅРёРµ СЂРµРіРёСЃС‚СЂР° РЅРѕРјРµСЂ 1 (Р±СѓРґРµС‚ СЃРґРІРёРЅСѓС‚ РЅР° С‚СЂРµС‚РёР№). 
 {
 		for (signed char i = 7; i >= 0; i--){				// Now we are entering the loop to shift out 8+ bits
 
@@ -98,18 +98,18 @@ void PREshift(unsigned char dataRGB_LED)					// Преднаполнение регистра номер 1 
 		}
 }
 
-void shift( unsigned int data,unsigned char dataRGB_LED){					// впихиваем страшим вперёд.
+void shift( unsigned int data,unsigned char dataRGB_LED){					// РІРїРёС…РёРІР°РµРј СЃС‚СЂР°С€РёРј РІРїРµСЂС‘Рґ.
 	uint8_t localvar;
-	uint8_t j = 2;											//оптимальнее через доп переменную, чем повторять цикл дважды!
+	uint8_t j = 2;											//РѕРїС‚РёРјР°Р»СЊРЅРµРµ С‡РµСЂРµР· РґРѕРї РїРµСЂРµРјРµРЅРЅСѓСЋ, С‡РµРј РїРѕРІС‚РѕСЂСЏС‚СЊ С†РёРєР» РґРІР°Р¶РґС‹!
 	
 	ShiftPort &= ~(1 << ST_CP); 							// Set the register-clock pin low
 
 
 	/////////////////////////////////////////////////////////////
-	if (dataRGB_LED){ PREshift(dataRGB_LED);data|=0x1;}		//Надо зажигать светодиод. 0x1- младший бит посылки - Q0 на 595 номер1 и общий на LED. 
+	if (dataRGB_LED){ PREshift(dataRGB_LED);data|=0x1;}		//РќР°РґРѕ Р·Р°Р¶РёРіР°С‚СЊ СЃРІРµС‚РѕРґРёРѕРґ. 0x1- РјР»Р°РґС€РёР№ Р±РёС‚ РїРѕСЃС‹Р»РєРё - Q0 РЅР° 595 РЅРѕРјРµСЂ1 Рё РѕР±С‰РёР№ РЅР° LED. 
 	//////////////////////////////////////////////
 
-	localvar = (data>>8);									// сносим младший байт, сначала старший, его ведь "шифтить" до второй 595
+	localvar = (data>>8);									// СЃРЅРѕСЃРёРј РјР»Р°РґС€РёР№ Р±Р°Р№С‚, СЃРЅР°С‡Р°Р»Р° СЃС‚Р°СЂС€РёР№, РµРіРѕ РІРµРґСЊ "С€РёС„С‚РёС‚СЊ" РґРѕ РІС‚РѕСЂРѕР№ 595
 	do
 	{
 		for (signed char i = 7; i >= 0; i--){				// Now we are entering the loop to shift out 8+ bits
@@ -122,8 +122,8 @@ void shift( unsigned int data,unsigned char dataRGB_LED){					// впихиваем страш
 
 			PORTB &= ~(1 << DS );							// Set the datapin low again 
 		}
-		localvar = data;									// Вот теперь уже берём младший, и делаем ещё одну итерацию!
-		j--;												// первая итерация 1, вторая - 0, и поэтому третьей не будет.
+		localvar = data;									// Р’РѕС‚ С‚РµРїРµСЂСЊ СѓР¶Рµ Р±РµСЂС‘Рј РјР»Р°РґС€РёР№, Рё РґРµР»Р°РµРј РµС‰С‘ РѕРґРЅСѓ РёС‚РµСЂР°С†РёСЋ!
+		j--;												// РїРµСЂРІР°СЏ РёС‚РµСЂР°С†РёСЏ 1, РІС‚РѕСЂР°СЏ - 0, Рё РїРѕСЌС‚РѕРјСѓ С‚СЂРµС‚СЊРµР№ РЅРµ Р±СѓРґРµС‚.
 		
 	} while (j);
 	
@@ -135,8 +135,8 @@ void shift( unsigned int data,unsigned char dataRGB_LED){					// впихиваем страш
 		ShiftDDR |=(1<<ST_CP)|(1<<SH_CP);
 		ShiftPort &=~((1<<ST_CP)|(1<<SH_CP));
 		
-		DDRB |= (1<<0)|(1<<4); //DS и OE
+		DDRB |= (1<<0)|(1<<4); //DS Рё OE
 		PORTB  &=~((1<<0)|(1<<4));
-		// вывод OE должен всегда быть на "земле". Смотри даташит.
+		// РІС‹РІРѕРґ OE РґРѕР»Р¶РµРЅ РІСЃРµРіРґР° Р±С‹С‚СЊ РЅР° "Р·РµРјР»Рµ". РЎРјРѕС‚СЂРё РґР°С‚Р°С€РёС‚.
 	}
 

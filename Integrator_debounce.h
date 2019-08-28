@@ -4,7 +4,7 @@
  * Created: 30.07.2014 23:36:40
  *  Author: idopshik
  
- Вполне рабочий код
+ Р’РїРѕР»РЅРµ СЂР°Р±РѕС‡РёР№ РєРѕРґ
  */ 
 
 
@@ -12,8 +12,8 @@
 #define INTEGRATOR_DEBOUNCE_H_
 
 
-//////Переменные для интегрирующего дебаунса
-#define DEBOUNCE_TIME       0.3     ////Эти три переменные для дебаунса
+//////РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РёРЅС‚РµРіСЂРёСЂСѓСЋС‰РµРіРѕ РґРµР±Р°СѓРЅСЃР°
+#define DEBOUNCE_TIME       0.3     ////Р­С‚Рё С‚СЂРё РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РґРµР±Р°СѓРЅСЃР°
 #define SAMPLE_FREQUENCY    3000
 #define MAXIMUM         (DEBOUNCE_TIME * SAMPLE_FREQUENCY)
  
@@ -22,7 +22,7 @@
   
  
 /* These are the variables used */
-///unsigned int input;       /* 0 or 1 depending on the input signal */ Объявил в прототипе, тут не нужно стало быть.
+///unsigned int input;       /* 0 or 1 depending on the input signal */ РћР±СЉСЏРІРёР» РІ РїСЂРѕС‚РѕС‚РёРїРµ, С‚СѓС‚ РЅРµ РЅСѓР¶РЅРѕ СЃС‚Р°Р»Рѕ Р±С‹С‚СЊ.
 unsigned int integrator;  /* Will range from 0 to the specified MAXIMUM */
 unsigned char output = 1 ;      /* Cleaned-up version of the input signal */
 
@@ -52,7 +52,7 @@ char f_integrator (unsigned char input)
 	  return output;
 }	  
  
-///////////////////////////////////////Дубль кода//////////////////////
+///////////////////////////////////////Р”СѓР±Р»СЊ РєРѕРґР°//////////////////////
 
 
  

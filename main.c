@@ -27,7 +27,6 @@
 #include <stddef.h>                             // Описания типов и имён
 #include <stdint.h>
 
-
 #include "LED_shift.h"
 #include "HW_definitions.h"
 #include "Button_input.h"
@@ -38,8 +37,6 @@
 #include "uart_addon.h"                          // Исключительно DEBUG
 #include "MicroMenu.h"                           //MICRO-MENU V2 Dean Camera, 2012. Респект чуваку.
 #include "sound.h"                               // звуковой модуль
-
-
 
 //--------------------------------Энергонезависивая память.-----------------------------------
 unsigned char EE_OverCurrent_limit_OCR2_value EEMEM;

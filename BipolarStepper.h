@@ -5,7 +5,7 @@
  *  Author: isairon
  Stepper TLE4729G
  */ 
-#define F_CPU 16000000UL  // 8 MHz, внутренняя RC-цепочка
+#define F_CPU 16000000UL  // 8 MHz, РІРЅСѓС‚СЂРµРЅРЅСЏСЏ RC-С†РµРїРѕС‡РєР°
 #include <avr/io.h>
 
 #ifndef BIPOLARSTEPPER_H_
@@ -19,31 +19,31 @@
 #define Error1 PC6
 #define Error2 PC7
 
-//Макросы
+//РњР°РєСЂРѕСЃС‹
 #define Phase1_p    SteppePORT|=(1<<Phase1)
 #define Phase2_p	SteppePORT|=(1<<Phase2)
 #define Phase1_n	SteppePORT&=~(1<<Phase1)
 #define Phase2_n	SteppePORT&=~(1<<Phase2)
 
-// Переменные 
+// РџРµСЂРµРјРµРЅРЅС‹Рµ 
 extern uint8_t GlobalAllowStepperMove;
 uint8_t reducer =0;
-// Прототипы
+// РџСЂРѕС‚РѕС‚РёРїС‹
 void Stepper_Move (uint8_t direction);
 
 void InitPins_for_Stepper(void)
 {
-StepperDDR|=(1<<Phase1)|(1<<Phase2);			//Фазы
+StepperDDR|=(1<<Phase1)|(1<<Phase2);			//Р¤Р°Р·С‹
 StepperDDR&= ~((1<<Error1)|(1<<Error2));
-SteppePORT|=(1<<Error1)|(1<<Error2);			//Подтяг на датчиках ошибок
+SteppePORT|=(1<<Error1)|(1<<Error2);			//РџРѕРґС‚СЏРі РЅР° РґР°С‚С‡РёРєР°С… РѕС€РёР±РѕРє
 }
 
 
 inline void ResetupTimer0FotThis(void)
 {
 	TCCR0 = 0;	
-	TCCR0 |= (1<<CS02)|(1<<CS00);	//  1024 - 32,7ms довольно медленно
-	TCCR0|= (1<<TOIE0);				// Прерывания по переполнению таймера.
+	TCCR0 |= (1<<CS02)|(1<<CS00);	//  1024 - 32,7ms РґРѕРІРѕР»СЊРЅРѕ РјРµРґР»РµРЅРЅРѕ
+	TCCR0|= (1<<TOIE0);				// РџСЂРµСЂС‹РІР°РЅРёСЏ РїРѕ РїРµСЂРµРїРѕР»РЅРµРЅРёСЋ С‚Р°Р№РјРµСЂР°.
 	sei();
 }
 //Functions
@@ -51,14 +51,14 @@ inline void ResetupTimer0FotThis(void)
 void StepperCheckPosition (signed char external_VAR);
 
 // Variables
-volatile static uint8_t current_Step_position;						//Текущий шаг
-volatile uint8_t target_Step;						//К чему стремимся
+volatile static uint8_t current_Step_position;						//РўРµРєСѓС‰РёР№ С€Р°Рі
+volatile uint8_t target_Step;						//Рљ С‡РµРјСѓ СЃС‚СЂРµРјРёРјСЃСЏ
 static volatile char StepperBusyFlag;
 
-void Stepper_Move (uint8_t direction)     //по внешеней переменно делаем шаг.
+void Stepper_Move (uint8_t direction)     //РїРѕ РІРЅРµС€РµРЅРµР№ РїРµСЂРµРјРµРЅРЅРѕ РґРµР»Р°РµРј С€Р°Рі.
 {
 	
-	if (current_Step_position)current_Step_position=0;		// проверка на выход из диапазона	
+	if (current_Step_position)current_Step_position=0;		// РїСЂРѕРІРµСЂРєР° РЅР° РІС‹С…РѕРґ РёР· РґРёР°РїР°Р·РѕРЅР°	
 	else current_Step_position=1;
 
 	if(direction)
